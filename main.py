@@ -1,5 +1,5 @@
 import pygame
-import sys
+import syss
 import time
 import random
 
