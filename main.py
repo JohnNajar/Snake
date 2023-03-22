@@ -1,5 +1,5 @@
 import pygame
-import syss
+import sys
 import time
 import random
 
@@ -27,6 +27,17 @@ score = 0
 snakePos = [100, 100]
 # Setting food at random position in the range of the window
 foodPos = [random.randrange(1, (windowX // 10)) * 10, random.randrange(1, (windowY // 10)) * 10]
+
+# Prints text on the screen
+def message(text, fontColor, fontSize, position):
+    font = pygame.font.SysFont('times new roman', fontSize)
+    msg = font.render(text, True, fontColor)
+    if position == "topleft":
+        game_window.blit(msg, [30, 10])
+    elif position == "topright":
+        game_window.blit(msg, [650, 10])
+    elif position == "center":
+        game_window.blit(msg, [windowX/2, windowY/2.25])
 
 
 def score():
@@ -75,7 +86,7 @@ def mainLoop(over=False, lost=False):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                game_over = True
+                over = True
             if event.type == pygame.KEYDOWN:
                 moveSnake(event)
 
